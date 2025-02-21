@@ -1,8 +1,6 @@
 @extends('layouts.app')
-
 @section('title', 'Dashboard')
 @section('header', 'Dashboard')
-
 @section('content')
     <div class="container mt-5">
         <div class="row justify-content-center">
@@ -12,7 +10,6 @@
                     @php
                         // Get the current hour
                         $hour = now()->hour;
-
                         // Determine the greeting based on the time of day
                         if ($hour < 12) {
                             $greeting = "Selamat Pagi";
@@ -21,18 +18,15 @@
                         } else {
                             $greeting = "Selamat Malam";
                         }
-
                         // Get the authenticated user's name (replace 'name' with your actual user attribute)
                         $userName = auth()->user()->name ?? 'Pengguna';
                     @endphp
                     {{ $greeting }}, <strong>{{ $userName }}</strong>!
                 </h3>
-
                 <!-- Header -->
                 <h4 class="text-center mb-4" style="color: #fff;">
                     To-Do List Hari ini: <strong>{{ $hariIni }} WIB</strong>
                 </h4>
-
                 <!-- Add Task Form -->
                 <form action="{{ route('todolist.store') }}" method="POST" class="mb-4 animate__animated animate__fadeInUp">
                     @csrf
@@ -46,13 +40,6 @@
                         </button>
                     </div>
                 </form>
-
-                <!-- View History Button -->
-                <a href="{{ route('todolist.history') }}"
-                    class="btn w-100 rounded-pill mb-4 animate__animated animate__fadeInUp"
-                    style="background-color: #48cae4; color: #fff; border: none; transition: all 0.3s ease;">
-                    Lihat Riwayat To-Do List
-                </a>
 
                 <!-- To-Do List Table -->
                 <table class="table table-hover shadow-sm animate__animated animate__fadeInUp" style="border-radius: 10px; overflow: hidden; background: rgba(255, 255, 255, 0.9);">
@@ -106,6 +93,13 @@
                     </tbody>
                 </table>
 
+                <!-- View History Button -->
+                <a href="{{ route('todolist.history') }}"
+                    class="btn w-100 rounded-pill mb-4 animate__animated animate__fadeInUp"
+                    style="background-color: #48cae4; color: #fff; border: none; transition: all 0.3s ease;">
+                    Lihat Riwayat To-Do List
+                </a>
+
                 <!-- Logout Button -->
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
@@ -117,7 +111,6 @@
             </div>
         </div>
     </div>
-
     <!-- Animate.css Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 @endsection
