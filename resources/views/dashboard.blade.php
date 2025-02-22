@@ -1,10 +1,13 @@
 @extends('layouts.app')
 @section('title', 'Dashboard')
-@section('header', 'Dashboard')
+@section('header')
+<h1 style="text-align: center; color: #fff;">Dashboard</h1>
+@endsection
+
 @section('content')
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
                 <!-- Personalized Welcome Message -->
                 <h3 class="text-center mb-4 animate__animated animate__fadeInDown" style="color: #fff;">
                     @php
@@ -63,7 +66,7 @@
 
                 <!-- To-Do List Table -->
                 <table class="table table-hover shadow-sm animate__animated animate__fadeInUp" style="border-radius: 10px; overflow: hidden; background: rgba(255, 255, 255, 0.9);">
-                    <thead style="background-color: #0077b6; color: #fff;">
+                    <thead class="bg-dark text-white">
                         <tr>
                             <th>No</th>
                             <th>Nama Tugas</th>
@@ -82,7 +85,7 @@
                                         @method('PATCH')
                                         <select name="status_tugas" class="form-select form-select-sm rounded-pill"
                                             onchange="this.form.submit()"
-                                            style="background-color: #f8f9fa; border: 1px solid #ced4da; transition: all 0.3s ease;">
+                                            style="background-color: #f8f9fa; border: 1px solid #016fff; transition: all 0.3s ease;">
                                             <option value="pending" {{ $todolist->status_tugas == 'pending' ? 'selected' : '' }}>
                                                 Pending
                                             </option>
@@ -116,7 +119,7 @@
                 <!-- View History Button -->
                 <a href="{{ route('todolist.history') }}"
                     class="btn w-100 rounded-pill mb-4 animate__animated animate__fadeInUp"
-                    style="background-color: #48cae4; color: #fff; border: none; transition: all 0.3s ease;">
+                    style="background-color: #48cae4; color: #000000; border: none; transition: all 0.3s ease;">
                     Lihat Riwayat To-Do List
                 </a>
 
