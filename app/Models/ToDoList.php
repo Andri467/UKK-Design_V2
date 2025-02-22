@@ -16,4 +16,13 @@ class ToDoList extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function dashboard()
+    {
+    $users = User::all(); // Fetch all users (you can filter this as needed)
+    $todolists = Todolist::where('user_id', auth()->id())->get();
+    $hariIni = now()->format('d F Y');
+
+    return view('dashboard', compact('users', 'todolists', 'hariIni'));
+    }
 }

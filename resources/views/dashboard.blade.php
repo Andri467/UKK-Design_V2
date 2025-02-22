@@ -23,10 +23,30 @@
                     @endphp
                     {{ $greeting }}, <strong>{{ $userName }}</strong>!
                 </h3>
+
+                <!-- Profile Dropdown for Account Switching -->
+                <div class="dropdown text-center mb-4">
+                    <button class="btn btn-secondary dropdown-toggle rounded-pill" type="button" id="profileDropdown"
+                        data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #0077b6; border-color: #0077b6; color: #fff;">
+                        Switch Account
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="profileDropdown" style="background-color: #f8f9fa;">
+                        @foreach ($users as $user)
+                            <li>
+                                <a class="dropdown-item" href="{{ route('switch.account', $user->id) }}"
+                                    style="color: #000; transition: all 0.3s ease;">
+                                    {{ $user->name }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+
                 <!-- Header -->
                 <h4 class="text-center mb-4" style="color: #fff;">
                     To-Do List Hari ini: <strong>{{ $hariIni }} WIB</strong>
                 </h4>
+
                 <!-- Add Task Form -->
                 <form action="{{ route('todolist.store') }}" method="POST" class="mb-4 animate__animated animate__fadeInUp">
                     @csrf
@@ -111,6 +131,7 @@
             </div>
         </div>
     </div>
+
     <!-- Animate.css Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 @endsection

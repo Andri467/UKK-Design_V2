@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ToDoListController;
+use App\Http\Controllers\UserController;
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 
@@ -33,3 +34,9 @@ Route::patch('/todolist/{todolist}/update-nama', [ToDoListController::class, 'up
 Route::get('/todolist/history', [ToDoListController::class, 'history'])->middleware('auth')->name('todolist.history');
 
 Route::get('/', function () { return view('landing'); })->name('landing');
+
+Route::get('/switch-account/{id}', [UserController::class, 'switchAccount'])->name('switch.account');
+
+use App\Http\Controllers\DashboardController;
+
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
